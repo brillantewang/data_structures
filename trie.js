@@ -23,7 +23,7 @@ class Trie {
     node.isCompleteWord = true;
   };
 
-  search(word) {
+  getLastCharNode(word) {
     let node = this.root;
 
     for (let i = 0; i < word.length; i++) {
@@ -32,9 +32,18 @@ class Trie {
       if (!node) return false;
     }
 
-    if (node.isCompleteWord) return true;
-    return false;
+    return node;
   };
+
+  search(word) {
+    const node = this.getLastCharNode(word);
+    return node && node.isCompleteWord;
+  }
+
+  startsWith(prefix) {
+    const node = this.getLastCharNode(prefix);
+    return node && !node.isCompleteWord;
+  }
 }
 
 const trie = new Trie();
@@ -44,4 +53,6 @@ trie.insert('potato');
 console.log(trie.search('bruhz'));
 console.log(trie.search('bruhzz'));
 console.log(trie.search('bruhs'));
+console.log(trie.startsWith('bruhs'));
 console.log(trie.search('pot'));
+console.log(trie.startsWith('pot'));
