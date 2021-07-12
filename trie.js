@@ -41,8 +41,7 @@ class Trie {
   }
 
   startsWith(prefix) {
-    const node = this.getLastCharNode(prefix);
-    return node && !node.isCompleteWord;
+    return Boolean(this.getLastCharNode(prefix));
   }
 }
 
@@ -50,9 +49,9 @@ const trie = new Trie();
 trie.insert('bruhz');
 trie.insert('bruhs');
 trie.insert('potato');
-console.log(trie.search('bruhz'));
-console.log(trie.search('bruhzz'));
-console.log(trie.search('bruhs'));
-console.log(trie.startsWith('bruhs'));
-console.log(trie.search('pot'));
-console.log(trie.startsWith('pot'));
+console.log(trie.search('bruhz')); // true
+console.log(trie.search('bruhzz')); // false
+console.log(trie.search('bruhs')); // true
+console.log(trie.startsWith('bruhs')); // true
+console.log(trie.search('pot')); // false
+console.log(trie.startsWith('pot')); // true
