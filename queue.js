@@ -50,13 +50,13 @@ class Queue {
     while (node) {
       console.log(node.data);
       node = node.next;
-    }
-  }
-}
+    };
+  };
+};
 
 const queue = new Queue();
 queue.add(4);
 queue.add(7);
 queue.add(9);
-console.log('removing ', queue.remove());
+console.log('removing', queue.remove());
 queue.print();
